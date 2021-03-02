@@ -1,2 +1,2 @@
-# woowa_cabinet
+# java-cabinet
 우아한테크코스 3기 크루들의 캐비넷 위치를 선정하는 애플리케이션입니다.
