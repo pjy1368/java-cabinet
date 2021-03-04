@@ -1,6 +1,7 @@
 package cabinet;
 
 
+import java.io.IOException;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
@@ -16,5 +17,11 @@ class CabinetTest {
         assertThat(result.get(16)).isEqualTo("에어");
         assertThat(result.get(39)).isEqualTo("X");
 //        showResult(result);
+    }
+
+    @Test
+    void read() throws IOException {
+        List<String> members = Cabinet.readCrewsList();
+        assertThat(members.size()).isEqualTo(51);
     }
 }
