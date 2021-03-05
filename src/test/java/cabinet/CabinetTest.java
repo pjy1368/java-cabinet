@@ -3,6 +3,7 @@ package cabinet;
 
 import java.io.IOException;
 import java.util.List;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
@@ -23,5 +24,12 @@ class CabinetTest {
     void read() throws IOException {
         List<String> members = Cabinet.readCrewsList();
         assertThat(members.size()).isEqualTo(51);
+    }
+
+    @Test
+    @DisplayName("사용하지 않는 캐비넷을 배정하지 않는지 확인")
+    void autoAllocateWithExcludeCabinet() throws IOException {
+        List<String> result = Cabinet.autoAllocate(40);
+        assertThat(result.get(39)).isEqualTo(Cabinet.FORBIDDEN_CABINET);
     }
 }
