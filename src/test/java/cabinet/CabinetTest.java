@@ -1,24 +1,25 @@
 package cabinet;
 
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import java.io.IOException;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import static org.assertj.core.api.Assertions.*;
 
 class CabinetTest {
 
     @Test
     @DisplayName("특정 크루가 원하는 캐비넷에 배정되는지 확인")
     void allocate() throws IOException {
-        final List<String> result = Cabinet.allocate("15:춘식,17:에어", 40);
+        final List<String> result = Cabinet.allocate("21:제이온,22:바다,23:조엘", 40);
         assertThat(result).hasSize(52);
-        assertThat(result.get(14)).isEqualTo("춘식");
-        assertThat(result.get(16)).isEqualTo("에어");
+        assertThat(result.get(20)).isEqualTo("제이온");
+        assertThat(result.get(21)).isEqualTo("바다");
+        assertThat(result.get(22)).isEqualTo("조엘");
         assertThat(result.get(39)).isEqualTo("X");
-//        showResult(result);
+        OutputView.showResult(result);
     }
 
     @Test
