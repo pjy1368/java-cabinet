@@ -23,9 +23,10 @@ class CabinetTest {
     }
 
     @Test
+    @DisplayName("크루가 총 몇명인지 확인")
     void read() throws IOException {
         final List<String> members = Cabinet.readCrewsList();
-        assertThat(members.size()).isEqualTo(51);
+        assertThat(members).hasSize(51);
     }
 
     @Test
