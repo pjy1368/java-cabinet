@@ -12,8 +12,7 @@ public class Cabinet {
     public static final String FORBIDDEN_CABINET = "X";
 
     public static List<String> allocateWithFixedMembers(final String fixedMemberInfo,
-        final int exclude)
-        throws IOException {
+        final int exclude) throws IOException {
         final List<String> members = autoAllocate(exclude);
         final String[] fixedMembers = fixedMemberInfo.split(",");
         for (final String fixedMember : fixedMembers) {
