@@ -8,14 +8,16 @@ import java.util.Collections;
 import java.util.List;
 
 public class Cabinet {
+
     public static final String FORBIDDEN_CABINET = "X";
 
-    public static List<String> allocate(String fixedMemberInfo, int exclude) throws IOException {
+    public static List<String> allocate(final String fixedMemberInfo, final int exclude)
+        throws IOException {
         final List<String> members = autoAllocate(exclude);
-        String[] fixedMembers = fixedMemberInfo.split(",");
-        for (String fixedMember : fixedMembers) {
-            int idx = Integer.parseInt(fixedMember.split(":")[0]) - 1;
-            String name = fixedMember.split(":")[1];
+        final String[] fixedMembers = fixedMemberInfo.split(",");
+        for (final String fixedMember : fixedMembers) {
+            final int idx = Integer.parseInt(fixedMember.split(":")[0]) - 1;
+            final String name = fixedMember.split(":")[1];
             if (!members.get(idx).equals(name)) {
                 Collections.swap(members, idx, members.indexOf(name));
             }
@@ -36,15 +38,15 @@ public class Cabinet {
     }
 
     public static List<String> autoAllocate() throws IOException {
-        List<String> members = readCrewsList();
+        final List<String> members = readCrewsList();
         members.add(FORBIDDEN_CABINET);
         Collections.shuffle(members);
         return new ArrayList<>(members);
     }
 
     public static List<String> autoAllocate(int exclude) throws IOException {
-        List<String> members = autoAllocate();
-        String name = members.get(exclude - 1);
+        final List<String> members = autoAllocate();
+        final String name = members.get(exclude - 1);
         if (!FORBIDDEN_CABINET.equals(name)) {
             int possibleCabinet = members.indexOf(FORBIDDEN_CABINET);
             Collections.swap(members, exclude - 1, possibleCabinet);

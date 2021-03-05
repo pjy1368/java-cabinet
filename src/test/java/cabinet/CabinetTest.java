@@ -13,7 +13,7 @@ class CabinetTest {
     @Test
     @DisplayName("특정 크루가 원하는 캐비넷에 배정되는지 확인")
     void allocate() throws IOException {
-        List<String> result = Cabinet.allocate("15:춘식,17:에어", 40);
+        final List<String> result = Cabinet.allocate("15:춘식,17:에어", 40);
         assertThat(result).hasSize(52);
         assertThat(result.get(14)).isEqualTo("춘식");
         assertThat(result.get(16)).isEqualTo("에어");
@@ -23,14 +23,14 @@ class CabinetTest {
 
     @Test
     void read() throws IOException {
-        List<String> members = Cabinet.readCrewsList();
+        final List<String> members = Cabinet.readCrewsList();
         assertThat(members.size()).isEqualTo(51);
     }
 
     @Test
     @DisplayName("사용하지 않는 캐비넷을 배정하지 않는지 확인")
     void autoAllocateWithExcludeCabinet() throws IOException {
-        List<String> result = Cabinet.autoAllocate(40);
+        final List<String> result = Cabinet.autoAllocate(40);
         assertThat(result.get(39)).isEqualTo(Cabinet.FORBIDDEN_CABINET);
     }
 }
