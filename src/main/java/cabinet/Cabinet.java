@@ -45,7 +45,7 @@ public class Cabinet {
         return new ArrayList<>(members);
     }
 
-    public static List<String> autoAllocate(int exclude) throws IOException {
+    public static List<String> autoAllocate(final int exclude) throws IOException {
         final List<String> members = autoAllocate();
         final String name = members.get(exclude - 1);
         if (!FORBIDDEN_CABINET.equals(name)) {
