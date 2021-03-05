@@ -4,23 +4,23 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 public class Cabinet {
     public static final String FORBIDDEN_CABINET = "X";
 
-    public static List<String> allocate(String memberInfo, int exclude) {
-        final List<String> members = new ArrayList<>(Arrays.asList(new String[52]));
-        members.set(exclude - 1, "X");
-        String[] teamMembers = memberInfo.split(",");
-        for (String teamMember : teamMembers) {
-            int idx = Integer.parseInt(teamMember.split(":")[0]) - 1;
-            String name = teamMember.split(":")[1];
-            members.set(idx, name);
+    public static List<String> allocate(String fixedMemberInfo, int exclude) throws IOException {
+        final List<String> members = autoAllocate(exclude);
+        String[] fixedMembers = fixedMemberInfo.split(",");
+        for (String fixedMember : fixedMembers) {
+            int idx = Integer.parseInt(fixedMember.split(":")[0]) - 1;
+            String name = fixedMember.split(":")[1];
+            if (!members.get(idx).equals(name)) {
+                Collections.swap(members, idx, members.indexOf(name));
+            }
         }
-        return members;
+        return new ArrayList<>(members);
     }
 
     public static List<String> readCrewsList() throws IOException {

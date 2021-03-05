@@ -11,7 +11,8 @@ import static org.assertj.core.api.Assertions.*;
 class CabinetTest {
 
     @Test
-    void allocate() {
+    @DisplayName("특정 크루가 원하는 캐비넷에 배정되는지 확인")
+    void allocate() throws IOException {
         List<String> result = Cabinet.allocate("15:춘식,17:에어", 40);
         assertThat(result).hasSize(52);
         assertThat(result.get(14)).isEqualTo("춘식");
