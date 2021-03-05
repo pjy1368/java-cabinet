@@ -14,7 +14,7 @@ public class OutputView {
         for (int i = 0; i < members.size(); i++) {
             appendCabinetInfo(result, i, members);
         }
-        System.out.print(result.toString());
+        System.out.println(result.toString());
     }
 
     private static void appendCabinetInfo(final StringBuilder result, final int index,
