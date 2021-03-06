@@ -13,8 +13,7 @@ class CabinetTest {
     @Test
     @DisplayName("특정 크루가 원하는 캐비넷에 배정되는지 확인")
     void allocateWithFixedMembers() throws IOException {
-        final List<String> result =
-            Cabinet.allocateWithFixedMembers("21:제이온,22:바다,23:조엘", 40);
+        final List<String> result = Cabinet.allocateWithFixedMembers("21:제이온,22:바다,23:조엘", 40);
         assertThat(result).hasSize(52);
         assertThat(result.get(20)).isEqualTo("제이온");
         assertThat(result.get(21)).isEqualTo("바다");
