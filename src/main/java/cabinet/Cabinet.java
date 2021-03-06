@@ -48,7 +48,7 @@ public class Cabinet {
         final List<String> members = autoAllocate();
         final String name = members.get(exclude - 1);
         if (!FORBIDDEN_CABINET.equals(name)) {
-            int possibleCabinet = members.indexOf(FORBIDDEN_CABINET);
+            final int possibleCabinet = members.indexOf(FORBIDDEN_CABINET);
             Collections.swap(members, exclude - 1, possibleCabinet);
         }
         return new ArrayList<>(members);
