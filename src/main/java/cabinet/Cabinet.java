@@ -34,7 +34,7 @@ public class Cabinet {
             members.add(line);
         }
         br.close();
-        return members;
+        return new ArrayList<>(members);
     }
 
     public static List<String> autoAllocate() throws IOException {
